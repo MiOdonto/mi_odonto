@@ -1,0 +1,2864 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiOdonto | Clínica Odontológica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===================== THEME VARIABLES ===================== */
+        :root {
+            --transition-speed: 0.5s;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f5f0eb;
+            --bg-secondary: #eee8e0;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --bg-card-hover: rgba(255, 255, 255, 0.98);
+            --bg-header: rgba(245, 240, 235, 0.95);
+            --bg-topbar: #2c2416;
+            --bg-footer: #2c2416;
+            --bg-overlay: rgba(245, 240, 235, 0.9);
+            --text-primary: #1a1208;
+            --text-secondary: #4a3f2f;
+            --text-muted: #8a7a66;
+            --text-topbar: #f5f0eb;
+            --accent-1: #b5883a;
+            --accent-2: #c4673c;
+            --accent-3: #7a5c2e;
+            --accent-glow: rgba(181, 136, 58, 0.25);
+            --accent-glow-2: rgba(196, 103, 60, 0.2);
+            --border-color: rgba(181, 136, 58, 0.25);
+            --border-strong: rgba(181, 136, 58, 0.55);
+            --shadow-soft: 0 8px 32px rgba(44, 36, 22, 0.1);
+            --shadow-medium: 0 16px 48px rgba(44, 36, 22, 0.15);
+            --shadow-strong: 0 24px 64px rgba(44, 36, 22, 0.2);
+            --hero-gradient: radial-gradient(ellipse at 60% 40%, rgba(181,136,58,0.13) 0%, rgba(245,240,235,0) 70%);
+            --about-gradient: linear-gradient(135deg, #f0e8dc 0%, #e8ddd0 100%);
+            --services-bg: #f5f0eb;
+            --team-gradient: linear-gradient(135deg, #ede4d8 0%, #e5dccf 100%);
+            --testimonial-bg: rgba(255, 255, 255, 0.7);
+            --contact-gradient: linear-gradient(135deg, rgba(181,136,58,0.08) 0%, rgba(196,103,60,0.08) 100%);
+            --input-bg: rgba(255, 255, 255, 0.9);
+            --input-border: rgba(181,136,58,0.35);
+            --particle-color: #b5883a;
+            --grid-color: rgba(181, 136, 58, 0.08);
+            --logo-gradient: linear-gradient(45deg, #b5883a, #c4673c);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #000000;
+            --bg-secondary: #050510;
+            --bg-card: rgba(0, 20, 50, 0.45);
+            --bg-card-hover: rgba(0, 30, 70, 0.6);
+            --bg-header: rgba(0, 0, 0, 0.92);
+            --bg-topbar: rgba(0, 40, 94, 0.95);
+            --bg-footer: rgba(0, 0, 0, 0.97);
+            --bg-overlay: rgba(0,0,0,0.88);
+            --text-primary: #f0f4ff;
+            --text-secondary: #b0c0e0;
+            --text-muted: #6080a0;
+            --text-topbar: #f0f4ff;
+            --accent-1: #00ffff;
+            --accent-2: #ff00ff;
+            --accent-3: #0055a5;
+            --accent-glow: rgba(0, 255, 255, 0.25);
+            --accent-glow-2: rgba(255, 0, 255, 0.2);
+            --border-color: rgba(0, 168, 232, 0.25);
+            --border-strong: rgba(0, 255, 255, 0.55);
+            --shadow-soft: 0 8px 32px rgba(0,0,0,0.5);
+            --shadow-medium: 0 16px 48px rgba(0,255,255,0.1);
+            --shadow-strong: 0 24px 64px rgba(0,0,0,0.7);
+            --hero-gradient: radial-gradient(circle at center, rgba(0,168,232,0.1) 0%, rgba(0,0,0,0.8) 70%);
+            --about-gradient: linear-gradient(135deg, rgba(0,40,94,0.9) 0%, rgba(0,85,165,0.9) 100%);
+            --services-bg: rgba(0,0,0,0.97);
+            --team-gradient: linear-gradient(135deg, rgba(0,85,165,0.9) 0%, rgba(0,40,94,0.9) 100%);
+            --testimonial-bg: rgba(0,30,60,0.4);
+            --contact-gradient: linear-gradient(135deg, rgba(255,0,255,0.08) 0%, rgba(0,255,255,0.08) 100%);
+            --input-bg: rgba(0,0,0,0.7);
+            --input-border: rgba(0,168,232,0.4);
+            --particle-color: #00ffff;
+            --grid-color: rgba(0,255,255,0.07);
+            --logo-gradient: linear-gradient(45deg, #00ffff, #ff00ff);
+        }
+
+        /* ===================== RESET & BASE ===================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+
+        /* ===================== THEME TOGGLE BUTTON ===================== */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            width: 62px;
+            height: 34px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            filter: drop-shadow(0 4px 16px rgba(0,0,0,0.18));
+        }
+
+        .toggle-track {
+            width: 62px;
+            height: 34px;
+            border-radius: 17px;
+            background: var(--accent-1);
+            position: relative;
+            transition: background 0.4s ease;
+            box-shadow: 0 0 14px var(--accent-glow), inset 0 1px 3px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            justify-content: space-between;
+        }
+
+        .toggle-icon {
+            font-size: 14px;
+            line-height: 1;
+            z-index: 1;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        [data-theme="light"] .icon-moon { opacity: 0.4; }
+        [data-theme="light"] .icon-sun { opacity: 1; }
+        [data-theme="dark"] .icon-moon { opacity: 1; }
+        [data-theme="dark"] .icon-sun { opacity: 0.4; }
+
+        .toggle-thumb {
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #fff;
+            top: 4px;
+            left: 4px;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+
+        [data-theme="dark"] .toggle-thumb {
+            transform: translateX(28px);
+        }
+
+        /* ===================== PARTICLES ===================== */
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--particle-color);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float-particle 7s ease-in-out infinite;
+        }
+
+        @keyframes float-particle {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+            50% { transform: translateY(-22px) scale(1.15); opacity: 0.8; }
+        }
+
+        /* ===================== TOP BAR ===================== */
+        .top-bar {
+            background: var(--bg-topbar);
+            padding: 8px 0;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .top-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-contact a {
+            color: var(--text-topbar);
+            margin-right: 18px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            opacity: 0.9;
+            transition: opacity 0.2s, color 0.2s;
+            letter-spacing: 0.01em;
+        }
+
+        [data-theme="light"] .top-contact a:hover { color: var(--accent-1); opacity: 1; }
+        [data-theme="dark"] .top-contact a:hover { color: var(--accent-1); text-shadow: 0 0 10px var(--accent-1); opacity: 1; }
+
+        .top-social a {
+            color: var(--text-topbar);
+            margin-left: 12px;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            opacity: 0.8;
+        }
+
+        [data-theme="light"] .top-social a:hover { color: var(--accent-1); opacity: 1; }
+        [data-theme="dark"] .top-social a:hover { color: var(--accent-1); text-shadow: 0 0 10px var(--accent-1); opacity: 1; }
+
+        /* ===================== HEADER ===================== */
+        header {
+            background: var(--bg-header);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 1px solid var(--border-color);
+            transition: background var(--transition-speed) ease;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+		
+		/* ===================== HEADER ===================== 
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--neon-blue);
+            text-shadow: 0 0 20px var(--neon-blue);
+        } 
+		*/
+		
+		.logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            font-weight: 900;
+            background: var(--logo-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.01em;
+        }
+
+        .logo span {
+            color: var(--neon-pink);
+            text-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 28px;
+        }
+
+        nav ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--accent-1);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        nav ul li a:hover { color: var(--text-primary); }
+        nav ul li a:hover::after { width: 100%; }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            color: #fff !important;
+            padding: 11px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px var(--accent-glow);
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px var(--accent-glow);
+        }
+
+        .cta-button::after { display: none !important; }
+
+        /* ===================== HERO ===================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--hero-gradient);
+        }
+
+        .projection-grid {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 55px 55px;
+            animation: gridMove 22s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(55px, 55px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 24px;
+            position: relative;
+        }
+
+        .hero-logo {
+            margin-bottom: 36px;
+        }
+
+        .hero-logo img {
+            max-width: 360px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: var(--shadow-strong);
+            transition: all 0.4s ease;
+        }
+
+        [data-theme="light"] .hero-logo img {
+            box-shadow: 0 20px 60px rgba(44, 36, 22, 0.18), 0 0 0 1px var(--border-color);
+        }
+
+        [data-theme="dark"] .hero-logo img {
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.35);
+        }
+
+        .hero-logo:hover img { transform: scale(1.04); }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.6rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            transition: color var(--transition-speed);
+        }
+
+        [data-theme="light"] .hero h1 {
+            background: linear-gradient(135deg, #1a1208 30%, #b5883a 70%, #c4673c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        [data-theme="dark"] .hero h1 {
+            background: linear-gradient(45deg, var(--accent-1), white, var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: dark-glow 2.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes dark-glow {
+            from { filter: drop-shadow(0 0 18px rgba(0, 255, 255, 0.4)); }
+            to { filter: drop-shadow(0 0 28px rgba(255, 0, 255, 0.65)); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 36px;
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        /* ===================== SECTIONS ===================== */
+        section { position: relative; z-index: 2; }
+
+        /* ===================== ABOUT ===================== */
+        .about {
+            padding: 110px 24px;
+            background: var(--about-gradient);
+            transition: background var(--transition-speed);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .about-img-placeholder {
+            width: 100%;
+            height: 420px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="light"] .about-img-placeholder {
+            background: linear-gradient(135deg, #e8ddd0, #d5c8b8);
+            box-shadow: var(--shadow-medium);
+        }
+
+        [data-theme="dark"] .about-img-placeholder {
+            background: linear-gradient(135deg, #00285e, #0055a5);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .about-img-placeholder i {
+            font-size: 5rem;
+            color: var(--accent-1);
+            transition: all 0.3s;
+        }
+
+        [data-theme="dark"] .about-img-placeholder i {
+            text-shadow: 0 0 30px var(--accent-1);
+        }
+
+        .about-img:hover .about-img-placeholder {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .about-content { flex: 1; }
+
+        .section-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-1);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+            line-height: 1.2;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        [data-theme="dark"] .section-title {
+            color: var(--accent-1);
+            text-shadow: 0 0 18px var(--accent-glow);
+        }
+
+        .about p {
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+		/* ===================== SEÇÃO DE SERVIÇOS ===================== */
+		.services {
+			padding: 110px 24px;              /* Espaçamento interno (respiro) da seção */
+			background: var(--services-bg);   /* Cor de fundo definida por variável */
+			transition: background var(--transition-speed); /* Suaviza a troca de cor entre temas */
+		}
+		
+		.titulo h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.6rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            transition: color var(--transition-speed);
+        }
+		[data-theme="light"] .titulo h1 {
+            background: linear-gradient(135deg, #1a1208 30%, #b5883a 70%, #c4673c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        [data-theme="dark"] .titulo h1 {
+            background: linear-gradient(45deg, var(--accent-1), white, var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: dark-glow 2.5s ease-in-out infinite alternate;
+        }
+
+		/* Container que limita a largura do conteúdo e centraliza na tela */
+		.services-container { 
+			max-width: 1200px; 
+			margin: 0 auto; 
+		}
+
+		/* Cabeçalho da seção (título e subtítulo) */
+		.section-header {
+			text-align: center;               /* Centraliza o texto */
+			margin-bottom: 64px;              /* Afasta o cabeçalho do grid de cards */
+		}
+
+		/* Grid responsivo que ajusta o número de colunas automaticamente */
+		.services-grid {
+			display: grid;
+			/* Cria colunas de no mínimo 340px; se não houver espaço, elas quebram linha */
+			grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+			gap: 28px;                        /* Espaçamento entre os cards */
+		}
+
+		/* Estilização individual de cada Card de Serviço */
+		.service-card {
+			background: var(--bg-card);       /* Fundo do card (variável) */
+			padding: 42px 34px;               /* Espaçamento interno do card */
+			border-radius: 22px;              /* Bordas arredondadas */
+			text-align: center;
+			transition: all 0.4s ease;        /* Transição suave para todas as propriedades */
+			border: 1px solid var(--border-color); /* Borda sutil inicial */
+			backdrop-filter: blur(12px);      /* Efeito de vidro (desfoca o que está atrás) */
+			position: relative;               /* Necessário para posicionar o efeito 'shimmer' */
+			overflow: hidden;                 /* Garante que o brilho não saia do limite do card */
+		}
+
+		/* Efeito de Brilho (Shimmer) que passa pelo card */
+		.service-card::before {
+			content: '';
+			position: absolute;
+			top: 0; 
+			left: -100%;                      /* Começa fora do card, à esquerda */
+			width: 100%; 
+			height: 100%;
+			/* Gradiente linear criando uma "faixa" de luz sutil */
+			background: linear-gradient(90deg, transparent, rgba(181,136,58,0.06), transparent);
+			transition: left 0.5s ease;       /* Velocidade do deslocamento do brilho */
+		}
+
+		/* Ajuste da cor do brilho para o Tema Escuro (Tom ciano/neon) */
+		[data-theme="dark"] .service-card::before {
+			background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+		}
+
+		/* Dispara o brilho ao passar o mouse: ele corre da esquerda para a direita */
+		.service-card:hover::before { left: 100%; }
+
+		/* Estado de Hover do Card: levanta e ganha destaque */
+		.service-card:hover {
+			transform: translateY(-3px);     /* "Levanta" o card levemente */
+			box-shadow: var(--shadow-medium); /* Adiciona sombra para dar profundidade */
+			border-color: var(--border-strong);/* Deixa a borda mais visível */
+			background: var(--bg-card-hover); /* Altera levemente a cor de fundo */
+		}
+
+		/* Estilização do ícone dentro do card */
+		.service-icon {
+			font-size: 3.8rem;                /* Tamanho do ícone */
+			color: var(--accent-1);           /* Cor de destaque principal */
+			margin-bottom: 22px;              /* Espaço abaixo do ícone */
+			transition: all 0.3s;
+			display: block;
+		}
+
+		/* Adiciona um brilho neon no ícone apenas no Tema Escuro */
+		[data-theme="dark"] .service-icon { 
+			text-shadow: 0 0 28px var(--accent-1); 
+		}
+
+		/* Animação do ícone quando o card recebe hover */
+		.service-card:hover .service-icon {
+			color: var(--accent-2);           /* Muda para a segunda cor de destaque */
+			transform: scale(1.12) rotate(-5deg); /* Aumenta e inclina levemente */
+		}
+
+		/* Intensifica o brilho neon do ícone no hover (Tema Escuro) */
+		[data-theme="dark"] .service-card:hover .service-icon { 
+			text-shadow: 0 0 32px var(--accent-2); 
+		}
+
+		/* Títulos dos serviços */
+		.service-card h3 {
+			margin-bottom: 14px;
+			font-size: 1.2rem;
+			color: var(--text-primary);
+			font-weight: 600;
+		}
+
+		/* Descrição dos serviços */
+		.service-card p {
+			color: var(--text-secondary);     /* Cor de texto menos chamativa */
+			line-height: 1.65;                /* Melhora a legibilidade do parágrafo */
+			font-size: 0.95rem;
+		}
+
+        /* ===================== TEAM ===================== */
+        .team {
+            padding: 110px 24px;
+            background: var(--team-gradient);
+            transition: background var(--transition-speed);
+        }
+
+        .team-container { max-width: 1200px; margin: 0 auto; }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 36px;
+        }
+
+        .team-member {
+            background: var(--bg-card);
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--border-strong);
+        }
+
+        .team-img {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .team-img-placeholder {
+            width: 100%; height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease;
+        }
+
+        .team-img-placeholder:nth-of-type(1) {
+            background: linear-gradient(135deg, #c8b8a0, #a89070);
+        }
+
+        [data-theme="light"] .team-p1 { background: linear-gradient(135deg, #d4c4ac, #b8a080); }
+        [data-theme="light"] .team-p2 { background: linear-gradient(135deg, #c0d4cc, #90b4a8); }
+        [data-theme="light"] .team-p3 { background: linear-gradient(135deg, #d4c8b8, #b8a898); }
+        [data-theme="dark"] .team-p1 { background: linear-gradient(135deg, #00285e, #0055a5); }
+        [data-theme="dark"] .team-p2 { background: linear-gradient(135deg, #0055a5, #00a8e8); }
+        [data-theme="dark"] .team-p3 { background: linear-gradient(135deg, #00a8e8, #00285e); }
+
+        .team-img-placeholder i {
+            font-size: 3.8rem;
+            color: var(--accent-1);
+            transition: transform 0.3s;
+        }
+
+        [data-theme="dark"] .team-img-placeholder i { text-shadow: 0 0 20px var(--accent-1); }
+
+        .team-member:hover .team-img-placeholder { transform: scale(1.06); }
+
+        .team-img::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+            transition: left 0.55s;
+        }
+
+        [data-theme="dark"] .team-img::after {
+            background: linear-gradient(90deg, transparent, rgba(0,255,255,0.22), transparent);
+        }
+
+        .team-member:hover .team-img::after { left: 100%; }
+
+        .team-info {
+            padding: 26px;
+            text-align: center;
+        }
+
+        .team-info h3 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+            color: var(--accent-1);
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+        }
+		
+        [data-theme="dark"] .team-info h3 { text-shadow: 0 0 10px var(--accent-glow); }
+
+        .team-info p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* ===================== CAROUSEL SECTION ===================== */
+         /* ADD CARROSSEL */
+	
+	/* ===================== CAROUSEL ===================== */
+        .carousel-section {
+            padding: 110px 24px 160px;
+            background: var(--bg-primary);
+            transition: background var(--transition-speed);
+        }
+
+        .carousel-section .section-header { margin-bottom: 72px; }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 460px;
+            perspective: 1200px;
+        }
+
+        .carousel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 280px;
+            height: 380px;
+            left: 50%;
+            top: 50%;
+            transform-origin: center center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .item-content {
+            width: 100%; height: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 22px;
+            backdrop-filter: blur(14px);
+            padding: 32px 28px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+
+        .item-content::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+            transition: left 0.4s;
+        }
+
+        [data-theme="dark"] .item-content::before {
+            background: linear-gradient(90deg, transparent, rgba(0,255,255,0.08), transparent);
+        }
+
+        .carousel-item:hover .item-content::before { left: 100%; }
+
+        .carousel-item.active .item-content {
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-medium);
+            transform: scale(1.04);
+        }
+
+        [data-theme="light"] .carousel-item.active .item-content {
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 28px 60px rgba(181,136,58,0.18);
+        }
+
+        [data-theme="dark"] .carousel-item.active .item-content {
+            background: rgba(0,40,80,0.92);
+            box-shadow: 0 28px 60px rgba(0,255,255,0.2);
+        }
+
+        .item-icon {
+            width: 72px; height: 72px;
+            margin: 0 auto 18px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #fff;
+            box-shadow: 0 8px 24px var(--accent-glow);
+            animation: pulse-icon 2.2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); box-shadow: 0 10px 30px var(--accent-glow); }
+        }
+
+        .item-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 12px;
+            line-height: 1.25;
+        }
+
+        .item-description {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .more-btn {
+            position: absolute;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            border: none;
+            padding: 10px 22px;
+            border-radius: 25px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px var(--accent-glow);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .more-btn:hover {
+            transform: translateX(-50%) scale(1.08);
+            box-shadow: 0 8px 24px var(--accent-glow);
+        }
+
+        .expanded-content {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--bg-card-hover);
+            border-radius: 22px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.85);
+            transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10;
+            backdrop-filter: blur(20px);
+        }
+
+        [data-theme="light"] .expanded-content { background: rgba(255,255,255,0.98); }
+        [data-theme="dark"] .expanded-content { background: rgba(5,10,30,0.97); }
+
+        .expanded-content.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .expanded-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-1);
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        [data-theme="dark"] .expanded-title { text-shadow: 0 0 10px var(--accent-glow); }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .link-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 9px 14px;
+            text-align: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: all 0.25s ease;
+        }
+
+        .link-item:hover {
+            background: var(--accent-1);
+            color: #fff;
+            border-color: var(--accent-1);
+            transform: translateX(3px);
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 14px; right: 14px;
+            background: var(--accent-2);
+            border: none;
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .close-btn:hover { transform: scale(1.15) rotate(90deg); }
+
+        /* Carousel Controls */
+        .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .control-btn {
+            width: 56px; height: 56px;
+            border: 1.5px solid var(--border-strong);
+            background: var(--bg-card);
+            border-radius: 50%;
+            color: var(--accent-1);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(12px);
+            pointer-events: auto;
+            transform: translateY(-50%);
+        }
+
+        .control-btn:first-child { margin-left: 20px; }
+        .control-btn:last-child { margin-right: 20px; }
+
+        .control-btn:hover {
+            background: var(--accent-1);
+            color: #fff;
+            box-shadow: 0 0 24px var(--accent-glow);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        
+		 .indicators {
+            position: absolute;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+		.indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--accent-1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            transform: scale(1.3);
+        }
+
+        
+		.tech-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .tech-line {
+            position: absolute;
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #00ffff, transparent);
+            animation: move-line 3s linear infinite;
+        }
+
+        .tech-line:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .tech-line:nth-child(2) { left: 30%; animation-delay: 1s; }
+        .tech-line:nth-child(3) { left: 70%; animation-delay: 2s; }
+        .tech-line:nth-child(4) { left: 90%; animation-delay: 0.5s; }
+
+        @keyframes move-line {
+            0% { transform: translateY(-100px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(600px); opacity: 0; }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5rem; }
+            .carousel-container { height: 500px; }
+            .carousel-item { width: 250px; height: 320px; }
+            .item-content { padding: 20px; }
+            .indicators { bottom: -60px; }
+            
+            .control-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .control-btn:first-child {
+                margin-left: 10px;
+            }
+            
+            .control-btn:last-child {
+                margin-right: 10px;
+            }
+	 }
+
+        /* ===================== TESTIMONIALS CAROUSEL ===================== */
+        .testimonials {
+            padding: 110px 24px 140px;
+            background: var(--about-gradient);
+            transition: background var(--transition-speed);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-container { max-width: 1200px; margin: 0 auto; }
+
+        /* Sliding track */
+        .testimonial-track-wrapper {
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+
+        .testimonial-card {
+            background: var(--testimonial-bg);
+            padding: 40px 36px;
+            border-radius: 22px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(14px);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            flex: 0 0 calc(50% - 14px);
+            min-width: calc(50% - 14px);
+            margin-right: 28px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 700px) {
+            .testimonial-card {
+                flex: 0 0 100%;
+                min-width: 100%;
+                margin-right: 28px;
+            }
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .quote-mark {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            line-height: 0.45;
+            color: var(--accent-1);
+            opacity: 0.3;
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 28px;
+            font-size: 1.02rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .author-avatar {
+            width: 54px; height: 54px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .author-avatar i { color: #fff; font-size: 1.3rem; }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--accent-1);
+            font-size: 0.95rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+        }
+
+        .author-service { color: var(--text-muted); font-size: 0.82rem; }
+
+        /* Testimonial nav dots */
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 42px;
+        }
+
+        .t-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--border-color);
+            border: 1px solid var(--border-strong);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .t-dot.active {
+            background: var(--accent-1);
+            box-shadow: 0 0 12px var(--accent-glow);
+            transform: scale(1.4);
+        }
+
+        /* Testimonial prev/next arrows */
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            gap: 700px;
+            margin-top: 20px;
+        }
+
+        .t-ctrl-btn {
+            width: 50px; height: 50px;
+            border: 1.5px solid var(--border-strong);
+            background: var(--bg-card);
+            border-radius: 50%;
+            color: var(--accent-1);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .t-ctrl-btn:hover {
+            background: var(--accent-1);
+            color: #fff;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: scale(1.1);
+        }
+
+        /* ===================== CONTACT ===================== */
+        .contact {
+            padding: 110px 24px;
+            background: var(--contact-gradient);
+            transition: background var(--transition-speed);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 60px;
+        }
+
+        .contact-info-col { flex: 1; }
+
+        .contact-details { margin-top: 36px; }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 16px 18px;
+            background: var(--bg-card);
+            border-radius: 14px;
+            border-left: 3px solid var(--accent-1);
+            transition: all 0.25s;
+        }
+
+        .contact-item:hover {
+            background: var(--bg-card-hover);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--accent-1);
+            margin-right: 14px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .contact-item p, .contact-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .contact-item a:hover { color: var(--accent-1); }
+
+        .contact-social {
+            display: flex;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .contact-social a {
+            width: 42px; height: 42px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-1);
+            font-size: 1.05rem;
+            transition: all 0.25s;
+            text-decoration: none;
+			
+        }
+
+        .contact-social a:hover {
+            background: var(--accent-1);
+            color: #fff;
+            border-color: var(--accent-1);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px var(--accent-glow);
+			
+        }
+		
+		.contact-social-center {
+            display: flex;
+            gap: 14px;
+			justify-content: center;
+            /* ===================== remover margin-top: 30px;  ===================== */
+        }
+
+        .contact-social-center a {
+            width: 42px; height: 42px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-1);
+            font-size: 1.05rem;
+            transition: all 0.25s;
+            text-decoration: none;
+			/* ===================== ADD margin-bottom: 6px;  ===================== */
+        }
+
+        .contact-social-center a:hover {
+            background: var(--accent-1);
+            color: #fff;
+            border-color: var(--accent-1);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px var(--accent-glow);
+			/* ===================== ADD margin-bottom: 6px;  ===================== */
+        }
+
+        .contact-form-col {
+            flex: 1;
+            background: var(--bg-card);
+            padding: 44px;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(12px);
+        }
+
+        .form-group { margin-bottom: 22px; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--accent-1);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1.5px solid var(--input-border);
+            border-radius: 12px;
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.25s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-1);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .form-group textarea { height: 120px; resize: vertical; }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s;
+            box-shadow: 0 6px 22px var(--accent-glow);
+            width: 100%;
+            letter-spacing: 0.03em;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 32px var(--accent-glow);
+        }
+
+        /* ===================== FOOTER ===================== */
+        footer {
+            background: var(--bg-footer);
+            padding: 70px 24px 30px;
+            border-top: 1px solid var(--border-color);
+            transition: background var(--transition-speed);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 44px;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: var(--logo-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .footer-about p {
+            color: rgba(245,240,235,0.65);
+            line-height: 1.65;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        [data-theme="dark"] .footer-about p { color: rgba(176,192,224,0.7); }
+
+        .footer-social { display: flex; gap: 12px; }
+
+        .footer-social a {
+            color: rgba(245,240,235,0.6);
+            font-size: 1.05rem;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        [data-theme="light"] .footer-social a:hover { color: var(--accent-1); }
+        [data-theme="dark"] .footer-social a:hover { color: var(--accent-1); text-shadow: 0 0 12px var(--accent-1); }
+
+        .footer-col h3 {
+            color: var(--accent-1);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 32px; height: 2px;
+            background: var(--accent-1);
+            border-radius: 2px;
+        }
+
+        .footer-col ul { list-style: none; }
+
+        .footer-col li { margin-bottom: 10px; }
+
+        .footer-col a {
+            color: rgba(245,240,235,0.55);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        [data-theme="dark"] .footer-col a { color: rgba(176,192,224,0.6); }
+
+        .footer-col a:hover { color: var(--accent-1); padding-left: 4px; }
+
+        .footer-contact-col p {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: rgba(245,240,235,0.6);
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        [data-theme="dark"] .footer-contact-col p { color: rgba(176,192,224,0.65); }
+
+        .footer-contact-col a {
+            color: rgba(245,240,235,0.6);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+
+        .footer-contact-col a:hover { color: var(--accent-1); }
+
+        .footer-contact-col i { color: var(--accent-1); margin-top: 2px; flex-shrink: 0; }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 44px auto 0;
+            border-top: 1px solid rgba(245,240,235,0.1);
+            padding-top: 22px;
+            text-align: center;
+            color: rgba(245,240,235,0.4);
+            font-size: 0.85rem;
+        }
+
+        [data-theme="dark"] .footer-bottom { color: rgba(176,192,224,0.4); }
+
+        /* ===================== TECH LINES (dark only) ===================== */
+        .tech-lines {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .tech-line {
+            position: absolute;
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--accent-1), transparent);
+            animation: move-tline 3.2s linear infinite;
+            opacity: 0;
+        }
+
+        [data-theme="dark"] .tech-line { opacity: 1; }
+
+        .tech-line:nth-child(1) { left: 12%; animation-delay: 0s; }
+        .tech-line:nth-child(2) { left: 32%; animation-delay: 1s; }
+        .tech-line:nth-child(3) { left: 68%; animation-delay: 2s; }
+        .tech-line:nth-child(4) { left: 88%; animation-delay: 0.5s; }
+
+        @keyframes move-tline {
+            0% { transform: translateY(-100px); }
+            100% { transform: translateY(520px); }
+        }
+
+        /* ===================== SCAN LINES (dark only) ===================== */
+        .scan-lines {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 255, 0.025) 2px,
+                rgba(0, 255, 255, 0.025) 4px
+            );
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity var(--transition-speed);
+        }
+
+        [data-theme="dark"] .scan-lines { opacity: 1; }
+
+        /* ===================== LOADING ===================== */
+        .loading {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.fade-out { opacity: 0; pointer-events: none; }
+
+        .loader {
+            width: 72px; height: 72px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--accent-1);
+            border-radius: 50%;
+            animation: spin 0.85s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ===================== UTILITIES ===================== */
+        .sr-only { display: none; }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 900px) {
+            .about-container,
+            .contact-container { flex-direction: column; gap: 40px; }
+            .hero h1 { font-size: 2.6rem; }
+            .carousel-container { height: 460px; }
+            .carousel-item { width: 250px; height: 350px; margin-left: -125px; margin-top: -175px; }
+            .header-container { flex-direction: column; gap: 18px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 16px; }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .services-grid,
+            .team-grid,
+            .testimonial-grid { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+            .contact-form-col { padding: 28px 22px; }
+            .theme-toggle { bottom: 18px; right: 18px; }
+        }
+
+        @media (max-width: 400px) {
+            .footer-container { grid-template-columns: 1fr; }
+        }
+
+        /* Section title in dark mode */
+        [data-theme="dark"] .section-title-dark {
+            color: var(--accent-2) !important;
+            text-shadow: 0 0 18px var(--accent-glow-2);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Loading -->
+    <div class="loading" id="loading"><div class="loader"></div></div>
+
+    <!-- Scan Lines (dark effect) -->
+    <div class="scan-lines"></div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro">
+        <div class="toggle-track">
+            <span class="toggle-icon icon-sun">☀️</span>
+            <span class="toggle-icon icon-moon">🌙</span>
+            <div class="toggle-thumb"></div>
+        </div>
+    </button>
+	
+	<!-- Botao WhatApp Toggle -->
+	<a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank" style="position:fixed;bottom:80px;right:30px;z-index:9999;">
+		<img src="src/Redes_sociais/whatsapp.png" style="width: 100%; height: 60px; border-radius: 30px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+	</a>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-contact">
+                <a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank"><i class="fas fa-phone"></i> (11) 96135-2903</a>
+                <a href="mailto:dra.miodonto@outlook.com;dra.miodonto@gmail.com" target="_blank"><i class="fas fa-envelope"></i> dra.miodonto@gmail.com</a>
+            </div>
+            <div class="top-social">
+                <a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/dra.miodonto/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCLPcMkPpcsSdL3msk3jzKWw" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank"><i class="fab fa-whatsapp"></i></a>
+				<a href="https://www.tiktok.com/@Dra.Miodonto" target="_blank"><i class="fab fa-tiktok"></i></a>
+				<a href="https://x.com/Dra_MiOdonto" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <!-- <div class="logo">Mi<span style="opacity:0.7">Odonto</span></div> -->
+			<div class="logo">Mi<span>Odonto</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#team">Equipe</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                    <li><a href="#procedimentos">Procedimentos</a></li>
+                    <li><a href="https://api.whatsapp.com/send/?phone=5511961352903 target="_blank"" class="cta-button">Agendar Consulta</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero  Logo-->
+    <section class="hero" id="home">
+        <div class="projection-grid"></div>
+        <div class="hero-content">
+		<!-- hero-content -->
+            <div class="hero-logo">
+                <img src="src/ChatGPT_SEM_FUNDO.png" alt="Logo MiOdonto">  <!-- LOGO_DOURADO -->
+            </div>
+            <h1>Um sorriso transformado abre portas para novas oportunidades!</h1>
+            <p>Bem-vindo ao nosso consultório odontológico Mi.Odonto! Aqui, unimos tecnologia de ponta, profissionais qualificados e um ambiente acolhedor para cuidar do seu sorriso.  Agende sua visita, siga nas redes sociais e descubra uma nova experiência em odontologia! </p>
+            <a href="https://api.whatsapp.com/send/?phone=5511961352903" class="cta-button">Agende sua consulta</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-img">
+				<div class="about-img-placeholder">
+				<!-- juntou as 2 fotos ! com DIV -->
+				<img src="src/Dra_Mi_12.jpg" alt="Dra_MiOdonto" style="width: 100%; height: 500px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);">
+				   <!-- <i class="fas fa-building"></i> --> 
+				<!-- Remover foto do Predio!
+				<img src="src/Predio_localizacao_Mi.odonto.PNG" alt="Clínica MiOdonto" style="width: 100%; height: 400px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);">	
+				-->
+                </div>
+				<br>
+				<div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <a href="https://www.google.com/maps/@-23.5226845,-46.702635,3a,75y,354.52h,123.98t/data=!3m10!1e1!3m8!1s08H34nhvfp45lg0dSSmzZw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-33.980000000000004%26panoid%3D08H34nhvfp45lg0dSSmzZw%26yaw%3D354.52!7i16384!8i8192!9m2!1b1!2i49?entry=ttu&g_ep=EgoyMDI2MDIyMi4wIKXMDSoASAFQAw%3D%3D">Rua Roma, 620 sala 111 A — Lapa, São Paulo - SP</a>
+                </div>
+				<a href="https://api.whatsapp.com/send/?phone=5511961352903" class="cta-button">Agende uma Avaliação</a>
+            </div>
+            <div class="about-content">
+                <span class="section-label">Nossa Clínica</span>
+				<h2 class="section-title">Sobre a MiOdonto</h2>
+					<p> Formada desde 2007 atuo como dentista em clínicas bem conceituadas.
+					Sou Especialista em Cirurgia bucal Avançada pela Universidade São Leopoldo Mandic e Especialista em Implantodontia pela  faculdade de tecnologia IPPEO.
+					Durante mais de 18 anos de profissão realizei  muitos outros cursos e procedimentos tanto na área de cirurgias/ implantes como também de Estética restauradora, periodontal, harmonização facial entre outros, sempre buscando me atualizar e oferecer os melhores tratamentos aos meus pacientes.</p>
+					<p>Fundadora e proprietária da MI.ODONTO clínica, resultado de muitos anos de experiencia e dedicação, onde meu maior objetivo é oferecer tratamentos de qualidade através de não apenas conhecimento técnico mas também seriedade, respeito, humanização, comprometimento, confiabilidade, e profissionalismo. </p>
+					<p>A principal visão da Mi.ODONTO é oferecer ao paciente um tratamento confortável e personalizado.</p>
+					<!-- <p>Contamos com uma equipe multidisciplinar de profissionais altamente qualificados e especializados em diversas áreas da odontologia, prontos para cuidar do seu sorriso com excelência e dedicação.</p> --> 
+					<p>Nossa missão é proporcionar saúde bucal e bem-estar aos nossos pacientes, transformando sorrisos e vidas com tratamentos personalizados e resultados duradouros.</p>
+				
+            </div>
+        </div>
+    </section>
+
+    <!-- Services e Procedimentos -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <div class="section-header">
+					<span class="section-label">O que oferecemos</span>
+					<div class="titulo">
+						<h1>Nossos Serviços e Tratamentos</h1>
+						 <!--    <h2 class="section-title section-title-dark">Nossos Serviços</h2>  --> 
+					</div>
+				<div class="services-grid">
+					<div class="service-card" id="Preventiva">
+						<i class="fas service-icon">
+						<a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank">
+						<img src="src/Odontologia_Preventiva.jpg" alt="Preventiva" style="width: 50%; height: 100px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);">
+						</i></a>
+						<h3>Odontologia Preventiva</h3>
+						<p>A prevenção pouco divulgada e aplicada , tem um valor altíssimo para a saúde  bucal. Aqui nós abordamos a prevenção como base principal para a prevenção de cáries e outras doenças bucais. Venha conhecer o nosso protocolo de prevenção individualizado para cada caso. Afinal, você é único.</p>
+					</div>
+					<div class="service-card" id="Facetas">
+						<i class="fas service-icon">
+						<a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank">
+						<img src="src/Procedimentos/facetas.jpeg" alt="facetas" style="width: 50%; height: 100px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);">
+						</i></a>
+						<h3>Facetas e Lente "Estética Dental"</h3>
+						<p>Lâminas finas de porcelana que são cimentadas aos dentes. São indicadas para pacientes com alteração de cor, formato, tamanho do dente que deixam a harmonia comprometida. É necessário que se faça um desgaste mínimo nos dentes antes de receber as lâminas, para que a saúde dos tecidos ao redor do dente seja mantida. Pode ser feito em um ou mais dentes, de acordo com o planejamento do doutor.</p>
+					</div>
+					<div class="service-card" id="Implantes">
+						<i class="fas service-icon">
+						<a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank">
+						<img src="src/Implantes_Dentarios.jpg" alt="Implantes Dentários" style="width: 50%; height: 100px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);">
+						</i></a>
+						<h3>Implantes e Prótese Dentários</h3>
+						<p>Perder um ou mais dentes é sempre algo complicado. Não apenas esteticamente, mas, também, porque esse problema pode influenciar a forma como falamos, mastigamos e até respiramos. Implante consiste na instalação de um pino de titânio no osso maxilar ou mandibular e as  próteses totais, parciais e fixas são capazes de reabilitar as funções mastigatórias e estéticas.</p>
+						</div>
+					<div class="service-card" id="Ortodontia">
+						<i class="fas service-icon">
+						<a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank">
+						<img src="src/Ortodontia.jpg" alt="Ortodontia" style="width: 50%; height: 100px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);">
+						</i></a>
+						<h3>Alinhadores e Aparelhos "Ortodontia"</h3>
+						<p>Alinhadores permitem alinhar os dentes de maneira mais rápida e eficaz comparando aos aparelhos ortodônticos tradicionai, invisíveis são uma alternativa moderna, 
+						permite a remoção eventual, dando uma flexibilidade ao paciente.
+						Eles funcionam através de moldeiras transparentes feitas sob medida, projetadas por software 3D para movimentar os dentes gradualmente.</p>
+					</div>
+					<div class="service-card" id="Restauração">
+						<i class="fas service-icon"> 
+						<a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank">
+						<img src="src/Endodontia.jpg" alt="Restauração" style="width: 50%; height: 100px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);">
+						</i></a>
+						<h3>Restauração e Endodontia "Canal"</h3>
+						<p>A restauração odontológica, popularmente conhecida como "obturação", é um procedimento que visa recuperar a forma, função e estética de um dente danificado e afetado pela cárie.
+						Canal é tratamento de descontaminação causadoa pela cárie ou por fraturas que geram inflamação e dor. Em resumo: A restauração trata a superfície, enquanto o canal trata a raiz/interior. </p>
+					</div>
+					<div class="service-card" id="Clareamento">
+						<i class="fas service-icon"> 
+						<a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank">
+						<img src="src/Estética_Dental.jpg" alt="Clareamento" style="width: 50%; height: 100px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);">
+						</i></a>
+						<h3>"Clareamento"</h3>
+						<p>O clareamento dental é um procedimento odontológico estético que visa remover manchas e descolorações dos dentes, proporcionando um sorriso mais branco e luminoso. Temos programas de clareamento para cada caso, com técnicas diferenciada e personalizadas para cada paciente.</p>
+					</div>
+					<div class="service-card" id="Harmonizacao">
+						<i class="fas service-icon"> 
+						<a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank">
+						<img src="src/Procedimentos/Harmonizacao.jpeg" alt="Harmonizacao" style="width: 50%; height: 100px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);">
+						</i></a>
+						<h3> "Harmonização facial"</h3>
+						<p>É um conjunto de procedimentos estéticos que devolvem a harmonia e o equilíbrio estético de todo o rosto. São diversos benefícios utilizando técnicas e produtos específicos como a Toxina Botulínica, preenchedores, bioestimuladores, fios entre outros.</p>
+					</div>
+					<div class="service-card" id="enxerto">
+						<i class="fas service-icon"> 
+						<a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank">
+						<img src="src/Procedimentos/Implante.jpg" alt="enxerto" style="width: 50%; height: 100px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);">
+						</i></a>
+						<h3> "ENXERTO ÓSSEO"</h3>
+						<p>O enxerto ósseo odontológico é um procedimento cirúrgico que visa aumentar a quantidade e a qualidade do osso na região da mandíbula ou maxila. Ele é fundamental para a realização de implantes dentários, especialmente em casos onde houve perda óssea devido a extrações dentárias, doenças periodontais ou traumas.</p>
+					</div>				
+					<div class="service-card" id="Odontopediatria">
+						<i class="fas service-icon">
+						<a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank">
+						<img src="src/Odontopediatria.jpg" alt="Odontopediatria" style="width: 50%; height: 100px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);">
+						</i></a>
+						<h3>Odontopediatria</h3>
+						<p>Cuidamos da saúde bucal dos pequenos com carinho e atenção especial, criando experiências positivas no consultório.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+    </section>
+
+    <!-- Team -->
+    <section class="team" id="team">
+        <div class="team-container">
+            <div class="section-header">
+                <span class="section-label">Especialistas</span>
+				<div class="titulo">
+					<h1>Nossa Equipe</h1>
+				</div>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-img">
+                        <div class="team-img-placeholder team-p3"> 
+                            <i class="fas">
+							<img src="src/Dra_MiOdonto.png" alt="Dra_MiOdonto" style="width: 100%; height: 300px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);"></i> 
+                        </div>
+                    </div>
+                    <div class="team-info">
+						<!-- midia social  add AJUSTAR-->
+							<div class="contact-social-center">
+									<a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR"><i class="fab fa-facebook-f"></i></a>
+									<a href="https://www.instagram.com/dra.miodonto/"><i class="fab fa-instagram"></i></a>
+									<a href="https://api.whatsapp.com/send/?phone=5511961352903"><i class="fab fa-whatsapp"></i></a>
+									<a href="https://www.youtube.com/channel/UCLPcMkPpcsSdL3msk3jzKWw"><i class="fab fa-youtube"></i></a>
+							</div>	
+                        <h3>Dra. Mirela Cunha</h3>
+                        <p>Ortodontia e Estética Dental</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-img">
+                        <div class="team-img-placeholder team-p1">
+                            <i class="fas">
+							<img src="src/time_2.jpeg" alt="Dra_MiOdonto" style="width: 100%; height: 300px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);"></i>   					
+                        </div>
+                    </div>
+                    <div class="team-info">
+					<!-- midia social  add AJUSTAR-->
+							<div class="contact-social-center">
+									<a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR"><i class="fab fa-facebook-f"></i></a>
+									<a href="https://www.instagram.com/dra.miodonto/"><i class="fab fa-instagram"></i></a>
+									<a href="https://api.whatsapp.com/send/?phone=5511961352903"><i class="fab fa-whatsapp"></i></a>
+									<a href="https://www.youtube.com/channel/UCLPcMkPpcsSdL3msk3jzKWw"><i class="fab fa-youtube"></i></a>
+							</div>	
+                        <h3>Dr. Ricardo Santos</h3>
+                        <p>Implantodontia</p>
+			        </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-img">
+                        <div class="team-img-placeholder team-p3">
+                            <i class="fas">
+							<img src="src/time_3.jpeg" alt="Dra_MiOdonto" style="width: 100%; height: 300px; border-radius: 20px; object-fit: cover; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);"></i>   					
+                        </div>
+                    </div>
+                    <div class="team-info">
+					<!-- midia social  add AJUSTAR-->
+							<div class="contact-social-center">
+									<a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR"><i class="fab fa-facebook-f"></i></a>
+									<a href="https://www.instagram.com/dra.miodonto/"><i class="fab fa-instagram"></i></a>
+									<a href="https://api.whatsapp.com/send/?phone=5511961352903"><i class="fab fa-whatsapp"></i></a>
+									<a href="https://www.youtube.com/channel/UCLPcMkPpcsSdL3msk3jzKWw"><i class="fab fa-youtube"></i></a>
+							</div>	
+                        <h3>Dra. Carolina Oliveira</h3>
+                        <p>Endodontia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel / Procedimentos -->
+    <!-- Carousel / Procedimentos -->
+		<section class="carousel-section" id="procedimentos">
+				<div class="section-header">
+					
+					<span class="section-label">Explore</span>
+					<div class="titulo">
+						<h1>Redes Sociais</h1>
+					</div>
+					<a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank" class="cta-button">Agende sua consulta</a>
+				</div>
+				<div class="carousel-container">
+				   
+					<div class="carousel" id="carousel">
+						<div class="carousel-item active">
+							<div class="item-content">
+								<a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank">
+								<div class="item-icon">
+								<img src="src/Redes_sociais/whatsapp.jpg" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+								</div></a>
+								<a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank"><h3 class="item-title">WhatApp</h3></a>
+								<p class="item-description">"Bem-vindo ao consultório Mi.Odonto! Profissionais qualificados e um ambiente acolhedor para cuidar do seu sorriso."</p>
+								<button class="more-btn" onclick="expandCard(this)">Saiba Mais</button>
+								<div class="expanded-content">
+									<button class="close-btn" onclick="closeCard(this)">×</button>
+									<h4 class="expanded-title">Link Rapidos</h4>
+									<div class="links-grid">
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSeVBq3l1Wp0pBJJ4a03neYJ2sEDqU9qZG9bUo8v-D9wfBbcNw/viewform" target="_blank" class="link-item">Entre em Contato</a>
+										<a href="https://g.page/r/CV7DPyHiMQ0lEBM/review" target="_blank" class="link-item">Avaliação</a>
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSf8zlZUR0tu2o3CYVI-eueBAwGJZIXyWQVLr0hQnULXk3J8UA/viewform" target="_blank" class="link-item">Sugestões e Feedback</a>
+										<a href="#" class="link-item">Participar do Grupo</a>
+										<a href="https://www.instagram.com/dra.miodonto/" target="_blank" class="link-item">Siga Instagam</a>
+										<a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR" target="_blank" class="link-item">Siga Facebook</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<div class="item-content">
+								<a href="https://www.instagram.com/dra.miodonto/" target="_blank">
+								<div class="item-icon">
+								<img src="src/Redes_sociais/instagram_2.jpg" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+								</div></a>
+								<a href="https://www.instagram.com/dra.miodonto/" target="_blank"><h3 class="item-title">Instagram</h3></a>
+								<p class="item-description">Quer dicas para um sorriso perfeito e saudável? Siga a Mi.Odonto nas redes sociais! Conteúdo exclusivo e novidades para cuidar bem de você. 😉</p>
+								<button class="more-btn" onclick="expandCard(this)">Saiba Mais</button>
+								<div class="expanded-content">
+									<button class="close-btn" onclick="closeCard(this)">×</button>
+									<h4 class="expanded-title">Link Rapidos</h4>
+									<div class="links-grid">
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSeVBq3l1Wp0pBJJ4a03neYJ2sEDqU9qZG9bUo8v-D9wfBbcNw/viewform" target="_blank" class="link-item">Entre em Contato</a>
+										<a href="https://g.page/r/CV7DPyHiMQ0lEBM/review" target="_blank" class="link-item">Avaliação</a>
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSf8zlZUR0tu2o3CYVI-eueBAwGJZIXyWQVLr0hQnULXk3J8UA/viewform" target="_blank" class="link-item">Sugestões e Feedback</a>
+										<a href="#" target="_blank" class="link-item">Participar do Grupo</a>
+										<a href="https://www.instagram.com/dra.miodonto/" target="_blank" class="link-item">Siga Instagam</a>
+										<a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR" target="_blank" class="link-item">Siga Facebook</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<div class="item-content">
+								<a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR" target="_blank">
+								<div class="item-icon">
+								<img src="src/Redes_sociais/Facebook.jpg" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+								</div></a>
+								<a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR" target="_blank"><h3 class="item-title">Facebook</h3></a>
+								<p class="item-description">"Quer dicas para um sorriso perfeito e saudável? Siga a Mi.Odonto nas redes sociais! Conteúdo exclusivo e novidades para cuidar bem de você. 😉"</p>
+								<button class="more-btn" onclick="expandCard(this)">Saiba Mais</button>
+								<div class="expanded-content">
+									<button class="close-btn" onclick="closeCard(this)">×</button>
+									<h4 class="expanded-title">Link Rapidos</h4>
+									<div class="links-grid">
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSeVBq3l1Wp0pBJJ4a03neYJ2sEDqU9qZG9bUo8v-D9wfBbcNw/viewform" target="_blank" class="link-item">Entre em Contato</a>
+										<a href="https://g.page/r/CV7DPyHiMQ0lEBM/review" target="_blank" class="link-item">Avaliação</a>
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSf8zlZUR0tu2o3CYVI-eueBAwGJZIXyWQVLr0hQnULXk3J8UA/viewform" target="_blank" class="link-item">Sugestões e Feedback</a>
+										<a href="#" target="_blank" class="link-item">Participar do Grupo</a>
+										<a href="https://www.instagram.com/dra.miodonto/" target="_blank" class="link-item">Siga Instagam</a>
+										<a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR" target="_blank" class="link-item">Siga Facebook</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<div class="item-content">
+								<a href="https://g.page/r/CV7DPyHiMQ0lEBM/review" target="_blank">
+								<div class="item-icon">
+								<img src="src/Redes_sociais/Google.png" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+								</div></a>
+								<a href="https://g.page/r/CV7DPyHiMQ0lEBM/review" target="_blank"><h3 class="item-title">Avaliação Google</h3></a>
+								<p class="item-description">Ajude na jornada para ganhar masi engajamento do Google! faça seu comentario e avaliação 5 estrelas! Obrigado! 🙏🏻✨.</p>
+								<button class="more-btn" onclick="expandCard(this)">Saiba Mais</button>
+								<div class="expanded-content">
+									<button class="close-btn" onclick="closeCard(this)">×</button>
+									<h4 class="expanded-title">Link Rapidos</h4>
+									<div class="links-grid">
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSeVBq3l1Wp0pBJJ4a03neYJ2sEDqU9qZG9bUo8v-D9wfBbcNw/viewform" target="_blank" class="link-item">Entre em Contato</a>
+										<a href="https://g.page/r/CV7DPyHiMQ0lEBM/review" target="_blank" class="link-item">Avaliação</a>
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSf8zlZUR0tu2o3CYVI-eueBAwGJZIXyWQVLr0hQnULXk3J8UA/viewform" target="_blank" class="link-item">Sugestões e Feedback</a>
+										<a href="#" target="_blank" class="link-item">Participar do Grupo</a>
+										<a href="https://www.instagram.com/dra.miodonto/" target="_blank" class="link-item">Siga Instagam</a>
+										<a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR" target="_blank" class="link-item">Siga Facebook</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<div class="item-content">
+								<a href="https://www.tiktok.com/@Dra.Miodonto" target="_blank">
+								<div class="item-icon">
+								<img src="src/Redes_sociais/tiktok.jpg" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+								</div></a>
+								<a href="https://www.tiktok.com/@Dra.Miodonto" target="_blank"><h3 class="item-title">tik tok</h3></a>
+								<p class="item-description">"Dê um up no seu sorriso! Siga a Mi.Odonto para acompanhar nosso trabalho e receber dicas valiosas. ✨"</p>
+								<button class="more-btn" onclick="expandCard(this)">Saiba Mais</button>
+								<div class="expanded-content">
+									<button class="close-btn" onclick="closeCard(this)">×</button>
+									<h4 class="expanded-title">Link Rapidos</h4>
+									<div class="links-grid">
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSeVBq3l1Wp0pBJJ4a03neYJ2sEDqU9qZG9bUo8v-D9wfBbcNw/viewform" target="_blank" class="link-item">Entre em Contato</a>
+										<a href="https://g.page/r/CV7DPyHiMQ0lEBM/review" target="_blank" class="link-item">Avaliação</a>
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSf8zlZUR0tu2o3CYVI-eueBAwGJZIXyWQVLr0hQnULXk3J8UA/viewform" target="_blank" class="link-item">Sugestões e Feedback</a>
+										<a href="#" target="_blank" class="link-item">Participar do Grupo</a>
+										<a href="https://www.instagram.com/dra.miodonto/" target="_blank" class="link-item">Siga Instagam</a>
+										<a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR" target="_blank" class="link-item">Siga Facebook</a>
+									</div>
+								</div>
+							</div>
+						</div>						
+						<div class="carousel-item">
+							<div class="item-content">
+								<a href="https://x.com/Dra_MiOdonto" target="_blank">
+								<div class="item-icon">
+								<img src="src/Redes_sociais/X.jpg" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+								</div></a>
+								<a href="https://x.com/Dra_MiOdonto" target="_blank"><h3 class="item-title">X-twitter</h3></a>
+								<p class="item-description">Transforme seu sorriso com a gente! ✨ Siga a Mi.Odonto para inspirações diárias, dicas de saúde bucal e tudo sobre os tratamentos que vão te deixar sorrindo à toa.</p>
+								<button class="more-btn" onclick="expandCard(this)">Saiba Mais</button>
+								<div class="expanded-content">
+									<button class="close-btn" onclick="closeCard(this)">×</button>
+									<h4 class="expanded-title">Link Rapidos</h4>
+									<div class="links-grid">
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSeVBq3l1Wp0pBJJ4a03neYJ2sEDqU9qZG9bUo8v-D9wfBbcNw/viewform" target="_blank" class="link-item">Entre em Contato</a>
+										<a href="https://g.page/r/CV7DPyHiMQ0lEBM/review" target="_blank" class="link-item">Avaliação</a>
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSf8zlZUR0tu2o3CYVI-eueBAwGJZIXyWQVLr0hQnULXk3J8UA/viewform" target="_blank" class="link-item">Sugestões e Feedback</a>
+										<a href="#" target="_blank" class="link-item">Participar do Grupo</a>
+										<a href="https://www.instagram.com/dra.miodonto/" target="_blank" class="link-item">Siga Instagam</a>
+										<a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR" target="_blank" class="link-item">Siga Facebook</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<div class="item-content">
+								<a href="https://www.google.com/maps/@-23.5226845,-46.702635,3a,75y,354.52h,123.98t/data=!3m10!1e1!3m8!1s08H34nhvfp45lg0dSSmzZw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-33.980000000000004%26panoid%3D08H34nhvfp45lg0dSSmzZw%26yaw%3D354.52!7i16384!8i8192!9m2!1b1!2i49?entry=ttu&g_ep=EgoyMDI2MDIyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+								<div class="item-icon">
+								<img src="src/Redes_sociais/endereco.jpg" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+								</div></a>
+								<a href="https://www.google.com/maps/@-23.5226845,-46.702635,3a,75y,354.52h,123.98t/data=!3m10!1e1!3m8!1s08H34nhvfp45lg0dSSmzZw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-33.980000000000004%26panoid%3D08H34nhvfp45lg0dSSmzZw%26yaw%3D354.52!7i16384!8i8192!9m2!1b1!2i49?entry=ttu&g_ep=EgoyMDI2MDIyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+								<h3 class="item-title">Localização</h3></a>
+								<p class="item-description">Rua: Roma, 620 sala 111 A - Lapa.</p>
+								<p class="item-description">(11) 96135-2903</p>
+								<p class="item-description">Seg–Sex: 8h às 19h </p>
+								<p class="item-description"> Sábado: 8h às 12h</p>
+								<button class="more-btn" onclick="expandCard(this)">Saiba Mais</button>
+								<div class="expanded-content">
+									<button class="close-btn" onclick="closeCard(this)">×</button>
+									<h4 class="expanded-title">Link Rapidos</h4>
+									<div class="links-grid">
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSeVBq3l1Wp0pBJJ4a03neYJ2sEDqU9qZG9bUo8v-D9wfBbcNw/viewform" target="_blank" class="link-item">Entre em Contato</a>
+										<a href="https://g.page/r/CV7DPyHiMQ0lEBM/review" target="_blank" class="link-item">Avaliação</a>
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSf8zlZUR0tu2o3CYVI-eueBAwGJZIXyWQVLr0hQnULXk3J8UA/viewform" target="_blank" class="link-item">Sugestões e Feedback</a>
+										<a href="#" target="_blank" class="link-item">Participar do Grupo</a>
+										<a href="https://www.instagram.com/dra.miodonto/" target="_blank" class="link-item">Siga Instagam</a>
+										<a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR" target="_blank" class="link-item">Siga Facebook</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-item">
+						<div class="item-content">
+								<a href="https://www.youtube.com/channel/UCLPcMkPpcsSdL3msk3jzKWw" target="_blank">
+								<div class="item-icon">
+								<img src="src/Redes_sociais/YouTube.jpg" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+								</div></a>
+								<a href="https://www.youtube.com/channel/UCLPcMkPpcsSdL3msk3jzKWw" target="_blank"><h3 class="item-title">YouTube</h3></a>
+								<p class="item-description">"Não perca nossas dicas rápidas para um sorriso incrível! Siga a Mi.Odonto e receba direto no seu feed tudo que você precisa para cuidar dos seus dentes."</p>
+								<button class="more-btn" onclick="expandCard(this)">Saiba Mais</button>
+								<div class="expanded-content">
+									<button class="close-btn" onclick="closeCard(this)">×</button>
+									<h4 class="expanded-title">Link Rapidos</h4>
+									<div class="links-grid">
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSeVBq3l1Wp0pBJJ4a03neYJ2sEDqU9qZG9bUo8v-D9wfBbcNw/viewform" target="_blank" class="link-item">Entre em Contato</a>
+										<a href="https://g.page/r/CV7DPyHiMQ0lEBM/review" target="_blank" class="link-item">Avaliação</a>
+										<a href="https://docs.google.com/forms/d/e/1FAIpQLSf8zlZUR0tu2o3CYVI-eueBAwGJZIXyWQVLr0hQnULXk3J8UA/viewform" target="_blank" class="link-item">Sugestões e Feedback</a>
+										<a href="#" target="_blank" class="link-item">Participar do Grupo</a>
+										<a href="https://www.instagram.com/dra.miodonto/" target="_blank" class="link-item">Siga Instagam</a>
+										<a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR" target="_blank" class="link-item">Siga Facebook</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-controls">
+						<button class="t-ctrl-btn" id="prevBtn">←</button>
+						<button class="t-ctrl-btn" id="nextBtn">→</button>
+					</div>
+					<div class="indicators" id="indicators">
+					</div>
+			    </div>
+			
+		</section>
+		    
+    <script>
+        class ModernCircularCarousel {
+            constructor() {
+                this.carousel = document.getElementById('carousel');
+                this.items = document.querySelectorAll('.carousel-item');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.indicatorsContainer = document.getElementById('indicators');
+                
+                this.currentIndex = 0;
+                this.totalItems = this.items.length;
+                this.angleStep = 360 / this.totalItems;
+                this.radius = 300;
+                
+                this.init();
+            }
+            
+            init() {
+                this.createIndicators();
+                this.positionItems();
+                this.bindEvents();
+                this.startAutoRotation();
+                
+                // Torna a instância globalmente acessível
+                window.carouselInstance = this;
+            }
+            
+            createIndicators() {
+                for (let i = 0; i < this.totalItems; i++) {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'indicator';
+                    if (i === 0) indicator.classList.add('active');
+                    indicator.addEventListener('click', () => this.goToSlide(i));
+                    this.indicatorsContainer.appendChild(indicator);
+                }
+            }
+            
+            positionItems() {
+                this.items.forEach((item, index) => {
+                    const angle = (index * this.angleStep) * Math.PI / 180;
+                    const x = Math.cos(angle) * this.radius;
+                    const y = Math.sin(angle) * this.radius * 0.3;
+                    const z = Math.sin(angle) * this.radius;
+                    
+                    const rotationY = (index * this.angleStep) - (this.currentIndex * this.angleStep);
+                    
+                    item.style.transform = `
+                        translate(-50%, -50%) 
+                        rotateY(${rotationY}deg) 
+                        translateZ(${this.radius}px)
+                        scale(${index === this.currentIndex ? 1 : 0.8})
+                    `;
+                    
+                    // Adiciona classe active apenas ao item atual
+                    item.classList.toggle('active', index === this.currentIndex);
+                });
+                
+                this.updateIndicators();
+            }
+            
+            updateIndicators() {
+                const indicators = document.querySelectorAll('.indicator');
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+            
+            next() {
+                this.currentIndex = (this.currentIndex + 1) % this.totalItems;
+                this.updateCarousel();
+            }
+            
+            prev() {
+                this.currentIndex = (this.currentIndex - 1 + this.totalItems) % this.totalItems;
+                this.updateCarousel();
+            }
+            
+            goToSlide(index) {
+                this.currentIndex = index;
+                this.updateCarousel();
+            }
+            
+            updateCarousel() {
+                const rotationY = -(this.currentIndex * this.angleStep);
+                this.carousel.style.transform = `rotateY(${rotationY}deg)`;
+                
+                // Atualiza as classes active
+                this.items.forEach((item, index) => {
+                    item.classList.toggle('active', index === this.currentIndex);
+                });
+                
+                this.updateIndicators();
+            }
+            
+            bindEvents() {
+                this.nextBtn.addEventListener('click', () => {
+                    this.next();
+                    this.resetAutoRotation();
+                });
+                
+                this.prevBtn.addEventListener('click', () => {
+                    this.prev();
+                    this.resetAutoRotation();
+                });
+                
+                // Navegação por teclado
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') {
+                        this.next();
+                        this.resetAutoRotation();
+                    } else if (e.key === 'ArrowLeft') {
+                        this.prev();
+                        this.resetAutoRotation();
+                    }
+                });
+                
+                // Pausa auto-rotação no hover
+                this.carousel.addEventListener('mouseenter', () => {
+                    this.pauseAutoRotation();
+                });
+                
+                this.carousel.addEventListener('mouseleave', () => {
+                    this.resumeAutoRotation();
+                });
+            }
+            
+            startAutoRotation() {
+                this.autoRotationInterval = setInterval(() => {
+                    this.next();
+                }, 8000);
+            }
+            
+            pauseAutoRotation() {
+                clearInterval(this.autoRotationInterval);
+            }
+            
+            resumeAutoRotation() {
+                this.startAutoRotation();
+            }
+            
+            resetAutoRotation() {
+                this.pauseAutoRotation();
+                this.resumeAutoRotation();
+            }
+        }
+        
+        // Inicializa o carrossel quando a página carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModernCircularCarousel();
+        });
+
+        // Funções para expandir e fechar cards
+        function expandCard(button) {
+            const card = button.closest('.carousel-item');
+            const expandedContent = card.querySelector('.expanded-content');
+            
+            // Pausa a auto-rotação
+            if (window.carouselInstance) {
+                window.carouselInstance.pauseAutoRotation();
+            }
+            
+            expandedContent.classList.add('active');
+        }
+
+        function closeCard(button) {
+            const card = button.closest('.carousel-item');
+            const expandedContent = card.querySelector('.expanded-content');
+            
+            expandedContent.classList.remove('active');
+            
+            // Resume a auto-rotação
+            if (window.carouselInstance) {
+                window.carouselInstance.resumeAutoRotation();
+            }
+        }
+    </script>
+    <!-- FIM CARROSSEL -->
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <div class="section-header">
+                <span class="section-label">O que dizem</span>
+                <div class="titulo">
+					<h1>Depoimentos</h1>
+				</div>
+            </div>
+            <div class="testimonial-track-wrapper">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <p class="testimonial-text">Tive minha primeira experiência com a Dra. Mirela e foi fenomenal. Excelente profissional, simpática, atenciosa e caprichosa. Adorei o resultado. É muito bom quando investimos em um serviço e todo o processo é muito satisfatório. Recomendo!</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas">
+							<img src="src/Depoimentos/Renan.png" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+							</i></div>
+                            <div>
+                                <div class="author-name">Renan Diniz</div>
+                                <div class="author-service">5 Estrelas</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <p class="testimonial-text">Fiz minha primeira consulta com Mi hoje e além do ambiente ser muito agradável, ela é uma excelente profissional!!! Confesso que tenho agonia de dentistas e com ela foi muito tranquilo. Super indico!!!!</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas">
+							<img src="src/Depoimentos/Keithy.png" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+							</i></div>
+                            <div>
+                                <div class="author-name">Keithy Alves Moreira</div>
+                                <div class="author-service">5 Estrelas</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <p class="testimonial-text">Dra Mirela é uma profissional extremamente competente com foco na experiência do paciente. Acolhedora e com excelente base técnica em suas colocações. Recomendo.<br><br></p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas">
+							<img src="src/Depoimentos/Rodrigo.png" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+							</i></div>
+                            <div>
+                                <div class="author-name">Rodrigo Almeida</div>
+                                <div class="author-service">5 Estrelas</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <p class="testimonial-text">Dra Mirela, extremamente profissional, cuida de toda minha família! Indico trabalho impecável.<br><br><br></p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas">
+							<img src="src/Depoimentos/Pri Belfiore.png" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+							</i></div>
+                            <div>
+                                <div class="author-name">Pri Belfiore</div>
+                                <div class="author-service">5 Estrelas</div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <p class="testimonial-text">Melhor dentista que tem. Seu atendimento é único, todos seus serviço são feito com excelência, sou uma pessoa que tem resistência a anestesia e ela sempre cuidadosa e muito paciente.
+													Indico de olhos fechados a Dra. Mirela, com toda certeza é a melhor da região.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas">
+							<img src="src/Depoimentos/Thiago Granata.png" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+							</i></div>
+                            <div>
+                                <div class="author-name">Thiago Granata</div>
+                                <div class="author-service">5 Estrelas</div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <p class="testimonial-text">Atendimento impecável, ambiente agradável. Dra Mirela é uma ótima profissional!!!!<br><br><br></p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas">
+							<img src="src/Depoimentos/Debora Henrique.png" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+							</i></div>
+                            <div>
+                                <div class="author-name">Debora Henrique</div>
+                                <div class="author-service">5 Estrelas</div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <p class="testimonial-text">Hoje passei no consultório com a Dra Mirella amei o trabalho dela!! Foi impecável em tudo desde o antendimento ao resultado do trabalho. Recomendo. <br><br></p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas">
+							<img src="src/Depoimentos/Tairine.png" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+							</i></div>
+                            <div>
+                                <div class="author-name">Tairine Almeida</div>
+                                <div class="author-service">5 Estrelas</div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <p class="testimonial-text">✨Excelente atendimento odontológico com a profissional Mirela. Muito atenciosa, cuidadosa e competente, transmitindo segurança e confiança durante todo o atendimento. Recomendo!👏🏻😃✨ <br><br></p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas">
+							<img src="src/Depoimentos/TH.png" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+							</i></div>
+                            <div>
+                                <div class="author-name">Thiago Furlan</div>
+                                <div class="author-service">5 Estrelas</div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <p class="testimonial-text">Recomendo sem restrição algum. Conheço a Dra Mirela há mais de 10 anos, quando eu tinha uma Clínica Odontológica e ela era minha melhor profissional. Ética, talentosa, delicada e muito dedicada em se manter atualizada.<br>
+													Tanto que hoje é minha Dentista e de minha família em quem confiamos plenamente.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas">
+							<img src="src/Depoimentos/Rubens.png" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+							</i></div>
+                            <div>
+                                <div class="author-name">Rubens Dalle Lucca</div>
+                                <div class="author-service">5 Estrelas</div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <p class="testimonial-text">Fiz meu siso com a Dra Mirela , minha filha tbm fez . Super indico , a Dra é dedicada demais no que faz. <br><br><br><br></p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas">
+							<img src="src/Depoimentos/Raquel.png" style="width: 100%; height: 70px; border-radius: 40px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+							</i></div>
+                            <div>
+                                <div class="author-name">Raquel de souza pereira</div>
+                                <div class="author-service">5 Estrelas</div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <p class="testimonial-text">Dr. Mirela uma ótima profissional, super atenciosa e sempre executa um ótimo trabalho, amo seu atendimento ❤️ <br><br><br><br></p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas">
+							<img src="src/Depoimentos/Jessica.png" style="width: 100%; height: 80px; border-radius: 50px; object-fit: cover; box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);">
+							</i></div>
+                            <div>
+                                <div class="author-name">Jessica Eng</div>
+                                <div class="author-service">5 Estrelas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-controls">
+                <button class="t-ctrl-btn" id="tPrevBtn">←</button>
+                <button class="t-ctrl-btn" id="tNextBtn">→</button>
+            </div>
+            <div class="testimonial-dots" id="testimonialDots"></div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info-col">
+                <span class="section-label">Fale Conosco</span>
+				<div class="titulo">
+					<h1>Entre em Contato</h1>
+				</div>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <a href="https://www.google.com/maps/@-23.5226845,-46.702635,3a,75y,354.52h,123.98t/data=!3m10!1e1!3m8!1s08H34nhvfp45lg0dSSmzZw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-33.980000000000004%26panoid%3D08H34nhvfp45lg0dSSmzZw%26yaw%3D354.52!7i16384!8i8192!9m2!1b1!2i49?entry=ttu&g_ep=EgoyMDI2MDIyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">Rua Roma, 620 sala 111 A — Lapa, São Paulo - SP</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank">(11) 96135-2903</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+						<p><i class="__cf_email__"></i> <a href="mailto:dra.miodonto@outlook.com;dra.miodonto@gmail.com" target="_blank">dra.miodonto@gmail.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock contact-icon"></i>
+                        <p>Seg–Sex: 8h às 19h &nbsp;|&nbsp; Sábado: 8h às 12h</p>
+                    </div>
+                </div>
+                <div class="contact-social">
+                    <a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/dra.miodonto/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.youtube.com/channel/UCLPcMkPpcsSdL3msk3jzKWw" target="_blank"><i class="fab fa-youtube"></i></a>
+					<a href="https://www.tiktok.com/@Dra.Miodonto" target="_blank"><i class="fab fa-tiktok"></i></a>
+					<a href="https://x.com/Dra_MiOdonto" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="contact-form-col">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" required placeholder="Seu nome completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" required placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" placeholder="(11) 9xxxx-xxxx">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" required placeholder="Como podemos ajudar?"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+	<!-- Video  -->
+	<section class="hero" id="video">
+        <div class="projection-grid"></div>
+        <div class="hero-content">
+            <div class="hero-logo">
+			<!-- Video  -->
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/watch?v=J9f6gC4Rz5Y?origin=http://127.0.0.1:5500"" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h1>Tudo que você precisa é de um bom dentista!</h1>
+            <p>Com a MiOdonto, você terá acesso aos melhores profissionais e à tecnologia mais avançada em tratamentos odontológicos.</p>
+            <a href="https://api.whatsapp.com/send/?phone=5511961352903" class="cta-button">Agende sua consulta</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <span class="footer-logo">MiOdonto</span>
+                <p>Transformando sorrisos e vidas com tratamentos odontológicos de excelência e atendimento humanizado.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/profile.php?id=61573567149766&locale=pt_BR" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/dra.miodonto/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.youtube.com/channel/UCLPcMkPpcsSdL3msk3jzKWw" target="_blank"><i class="fab fa-youtube"></i></a>
+					<a href="https://www.tiktok.com/@Dra.Miodonto" target="_blank"><i class="fab fa-tiktok"></i></a>
+					<a href="https://x.com/Dra_MiOdonto" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#team">Equipe</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                    <li><a href="#procedimentos">Procedimentos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#Preventiva">Odontologia Preventiva</a></li>
+                    <li><a href="#Facetas">Facetas e Lente</a></li>
+                    <li><a href="#Implantes">Implantes Dentários</a></li>
+                    <li><a href="#Ortodontia">Ortodontia</a></li>
+                    <li><a href="#Restauração">Restauração</a></li>
+                    <li><a href="#Clareamento">Clareamento</a></li>
+					<li><a href="#Harmonização">Harmonizacao</a></li> 
+                </ul>
+            </div>
+            <div class="footer-contact-col">
+                <div class="footer-col"><h3>Contato</h3></div>
+                <p><i class="fas fa-map-marker-alt"></i><a href="https://www.google.com/maps/@-23.5226876,-46.7026344">Rua Roma, 620 sala 111 A, Lapa — SP</a></p>
+                <p><i class="fas fa-phone"></i><a href="https://api.whatsapp.com/send/?phone=5511961352903" target="_blank"> (11) 96135-2903 </a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:dra.miodonto@outlook.com;dra.miodonto@gmail.com" target="_blank">dra.miodonto@gmail.com</a></p>
+                <p><i class="fas fa-clock"></i> Seg–Sex: 8h–19h | Sáb: 8h–12h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MiOdonto. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // ===================== THEME TOGGLE =====================
+        const html = document.documentElement;
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('miodonto-theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('miodonto-theme', next);
+            // Re-create particles for correct color
+            rebuildParticles();
+        });
+
+        // ===================== LOADING =====================
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('fade-out');
+            }, 1200);
+        });
+
+        // ===================== PARTICLES =====================
+        function createParticles() {
+            const container = document.getElementById('particles');
+            container.innerHTML = '';
+            const count = 40;
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.classList.add('particle');
+                const size = Math.random() * 4 + 1.5;
+                p.style.cssText = `
+                    width: ${size}px; height: ${size}px;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation-duration: ${5 + Math.random() * 4}s;
+                    animation-delay: ${Math.random() * 3}s;
+                `;
+                container.appendChild(p);
+            }
+        }
+
+        function rebuildParticles() { createParticles(); }
+        createParticles();
+
+        // ===================== CAROUSEL =====================
+        class Carousel {
+            constructor() {
+                this.el = document.getElementById('carousel');
+                this.items = document.querySelectorAll('.carousel-item');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.indicatorsEl = document.getElementById('indicators');
+                this.current = 0;
+                this.total = this.items.length;
+                this.angleStep = 360 / this.total;
+                this.radius = 320;
+                this.autoTimer = null;
+                this.init();
+                window.carouselInstance = this;
+            }
+
+            init() {
+                // Create indicators
+                for (let i = 0; i < this.total; i++) {
+                    const ind = document.createElement('div');
+                    ind.className = 'indicator' + (i === 0 ? ' active' : '');
+                    ind.addEventListener('click', () => { this.go(i); this.resetAuto(); });
+                    this.indicatorsEl.appendChild(ind);
+                }
+                this.update();
+                this.bindEvents();
+                this.startAuto();
+            }
+
+            update() {
+                const rot = -(this.current * this.angleStep);
+                this.el.style.transform = `rotateY(${rot}deg)`;
+                this.items.forEach((item, i) => item.classList.toggle('active', i === this.current));
+                document.querySelectorAll('.indicator').forEach((ind, i) => ind.classList.toggle('active', i === this.current));
+            }
+
+            next() { this.current = (this.current + 1) % this.total; this.update(); }
+            prev() { this.current = (this.current - 1 + this.total) % this.total; this.update(); }
+            go(i) { this.current = i; this.update(); }
+
+            startAuto() { this.autoTimer = setInterval(() => this.next(), 7000); }
+            stopAuto() { clearInterval(this.autoTimer); }
+            resetAuto() { this.stopAuto(); this.startAuto(); }
+            pauseAutoRotation() { this.stopAuto(); }
+            resumeAutoRotation() { this.startAuto(); }
+
+            bindEvents() {
+                this.nextBtn.addEventListener('click', () => { this.next(); this.resetAuto(); });
+                this.prevBtn.addEventListener('click', () => { this.prev(); this.resetAuto(); });
+                document.addEventListener('keydown', e => {
+                    if (e.key === 'ArrowRight') { this.next(); this.resetAuto(); }
+                    else if (e.key === 'ArrowLeft') { this.prev(); this.resetAuto(); }
+                });
+                this.el.addEventListener('mouseenter', () => this.stopAuto());
+                this.el.addEventListener('mouseleave', () => this.startAuto());
+            }
+        }
+
+        function expandCard(btn) {
+            const card = btn.closest('.carousel-item');
+            card.querySelector('.expanded-content').classList.add('active');
+            if (window.carouselInstance) window.carouselInstance.pauseAutoRotation();
+        }
+
+        function closeCard(btn) {
+            const card = btn.closest('.carousel-item');
+            card.querySelector('.expanded-content').classList.remove('active');
+            if (window.carouselInstance) window.carouselInstance.resumeAutoRotation();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => { new Carousel(); });
+
+        // ===================== SMOOTH SCROLL =====================
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // ===================== INTERSECTION OBSERVER =====================
+		// ===================== INTERSECTION OBSERVER (Animação ao Rolar) =====================
+
+		/** * Cria o observador que vigia a visibilidade dos elementos na tela.
+		 * entries: lista de elementos que o observador está monitorando e que mudaram de estado.
+		 */
+		const observer = new IntersectionObserver(entries => {
+			entries.forEach(entry => {
+				// Verifica se o elemento entrou na área visível do navegador
+				if (entry.isIntersecting) {
+					// Torna o elemento totalmente opaco
+					entry.target.style.opacity = '1';
+					
+					// Move o elemento para sua posição original (0 no eixo Y)
+					entry.target.style.transform = 'translateY(0)';
+					
+					// Opcional: Para parar de observar o elemento após a primeira animação, use:
+					// observer.unobserve(entry.target);
+				}
+			});
+		}, { 
+			// threshold: 0.1 significa que a função dispara quando 
+			// pelo menos 10% do elemento estiver visível na tela.
+			threshold: 0.1 
+		});
+
+		/**
+		 * Seleciona todos os elementos que devem ser animados (Cards de serviço, membros da equipe, etc.)
+		 */
+		document.querySelectorAll('.service-card, .team-member, .testimonial-card').forEach(el => {
+			// ESTADO INICIAL (Escondido):
+			el.style.opacity = '0'; // Começa invisível
+			el.style.transform = 'translateY(10px)'; // Começa 10 pixels abaixo da posição real
+			
+			// Define como a transição deve ocorrer (suavidade)
+			// 0.6s de duração com efeito 'ease' para uma animação fluida
+			el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+			
+			// Adiciona o elemento à lista de observação do 'observer'
+			observer.observe(el);
+		});
+        // ===================== FORM =====================
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.textContent = 'Enviando...';
+            btn.style.opacity = '0.8';
+            setTimeout(() => {
+                btn.textContent = '✓ Mensagem Enviada!';
+                btn.style.background = 'linear-gradient(135deg, #4caf50, #2e7d32)';
+                setTimeout(() => {
+                    btn.textContent = 'Enviar Mensagem';
+                    btn.style.background = '';
+                    btn.style.opacity = '1';
+                    this.reset();
+                }, 2500);
+            }, 1000);
+        });
+
+        // ===================== TESTIMONIALS CAROUSEL =====================
+        (function() {
+            const track = document.getElementById('testimonialTrack');
+            const dotsContainer = document.getElementById('testimonialDots');
+            const prevBtn = document.getElementById('tPrevBtn');
+            const nextBtn = document.getElementById('tNextBtn');
+            if (!track) return;
+            const cards = track.querySelectorAll('.testimonial-card');
+            const total = cards.length;
+            let current = 0;
+            let autoTimer = null;
+
+            const visibleCount = () => window.innerWidth <= 700 ? 1 : 2;
+            const maxIndex = () => Math.max(0, total - visibleCount());
+            const getCardWidth = () => cards[0].offsetWidth + 28;
+
+            function goto(index) {
+                current = Math.max(0, Math.min(index, maxIndex()));
+                track.style.transform = 'translateX(-' + (current * getCardWidth()) + 'px)';
+                document.querySelectorAll('.t-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+            }
+
+            function buildDots() {
+                dotsContainer.innerHTML = '';
+                const count = maxIndex() + 1;
+                for (let i = 0; i < count; i++) {
+                    const d = document.createElement('div');
+                    d.className = 't-dot indicator' + (i === 0 ? ' active' : '');
+                    d.addEventListener('click', () => { goto(i); resetAuto(); });
+                    dotsContainer.appendChild(d);
+                }
+            }
+
+            function startAuto() { autoTimer = setInterval(() => { goto(current >= maxIndex() ? 0 : current + 1); }, 6000); }
+            function stopAuto() { clearInterval(autoTimer); }
+            function resetAuto() { stopAuto(); startAuto(); }
+
+            prevBtn.addEventListener('click', () => { goto(current - 1); resetAuto(); });
+            nextBtn.addEventListener('click', () => { goto(current + 1); resetAuto(); });
+            track.addEventListener('mouseenter', stopAuto);
+            track.addEventListener('mouseleave', startAuto);
+            window.addEventListener('resize', () => { buildDots(); goto(0); });
+
+            buildDots();
+            goto(0);
+            startAuto();
+        })();
+
+        // ===================== GLITCH LOGO =====================
+        const logo = document.querySelector('.logo');
+        setInterval(() => {
+            if (Math.random() > 0.96) {
+                logo.style.filter = 'hue-rotate(30deg) saturate(2)';
+                setTimeout(() => { logo.style.filter = 'none'; }, 120);
+            }
+        }, 150);
+		
+		 // Glitch Effect for Logo
+        function createGlitchEffect() {
+            const logo = document.querySelector('.logo');
+            
+            setInterval(() => {
+                if (Math.random() > 0.95) {
+                    logo.style.textShadow = `
+                        0 0 20px var(--neon-blue),
+                        2px 0 0 var(--neon-pink),
+                        -2px 0 0 var(--neon-blue)
+                    `;
+                    logo.style.transform = 'skew(2deg)';
+                    
+                    setTimeout(() => {
+                        logo.style.textShadow = '0 0 20px var(--neon-blue)';
+                        logo.style.transform = 'none';
+                    }, 100);
+                }
+            }, 100);
+        }
+    </script>
+</body>
+</html>
